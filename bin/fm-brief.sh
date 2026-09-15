@@ -433,11 +433,11 @@ fi
 case "$MODE" in
   direct-PR)
     SETUP2=""
-    RULE1='1. Never push to the default branch (push only your `fm/'"$ID"'` branch). Never merge a PR.'
+    RULE1='1. Never push to the default branch (push only your working branch). Never merge a PR.'
     ;;
   local-only)
     SETUP2=""
-    RULE1="1. Never push to any remote and never open a PR. Work only on your \`fm/$ID\` branch; firstmate handles the merge into local \`main\`."
+    RULE1="1. Never push to any remote and never open a PR. Work only on your working branch; firstmate handles the merge into local \`main\`."
     ;;
   *)  # no-mistakes
     SETUP2="
@@ -461,7 +461,12 @@ You are in a disposable git worktree of $REPO, at a detached HEAD on a clean def
 The path check is authoritative: \`git rev-parse --git-dir\` and \`git rev-parse --git-common-dir\` can help inspect the repo, but they do not prove you are outside the primary checkout.
 If the top-level path is the primary checkout or not the worktree you were launched in, STOP - do not branch or commit here - append \`blocked: launched in primary checkout, not an isolated worktree\` to the status file and stop.
 
-1. First action: create your branch: \`git checkout -b fm/$ID\`$SETUP2
+1. First action: create your branch per firstmate's naming rules:
+   - **Ticketed task** (id contains \`ED-NNNNN\`): name the branch \`ED-<number>__<short_snake_case_title>\`
+   - **Non-ticketed task**: name the branch \`<type>/<kebab-case-description>\` where type is one of \`fix feat chore refactor test docs\`
+   
+   Use the task id as your starting point, derive a concise title from the ticket summary when available (read with \`jira\` or \`gh-axi\`), and run \`git checkout -b <your-branch-name>\`.
+$SETUP2
 
 # Rules
 $RULE1
