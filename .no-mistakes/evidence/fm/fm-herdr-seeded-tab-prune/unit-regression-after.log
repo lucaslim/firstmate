@@ -1,0 +1,1 @@
+ok - seeded prune accepts default and cwd-derived labels, preserves renamed and working tabs, and closes only the captured id

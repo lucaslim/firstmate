@@ -1,0 +1,7 @@
+created workspace=w1 seeded_tab=w1:t1 label_at_create=1
+seeded tab label after settle: '1 · firstmate'
+renamed seeded tab by hand -> 'my shell'
+tabs before prune: [{"tab_id":"w1:t1","label":"my shell"},{"tab_id":"w1:t2","label":"fm-task"}]
+prune rc=0
+tabs after prune:  [{"tab_id":"w1:t1","label":"my shell"},{"tab_id":"w1:t2","label":"fm-task"}]
+RESULT tab_count=2
